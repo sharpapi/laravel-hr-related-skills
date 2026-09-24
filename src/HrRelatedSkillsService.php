@@ -37,6 +37,11 @@ class HrRelatedSkillsService extends SharpApiClient
                 'sharpapi-hr-related-skills.api_job_status_polling_wait',
                 180)
         );
+        $this->setUseCustomInterval(
+            (bool) config(
+                'sharpapi-hr-related-skills.api_job_status_use_polling_interval',
+                false)
+        );
         $this->setUserAgent('SharpAPILaravelHrRelatedSkills/1.0.0');
     }
 
