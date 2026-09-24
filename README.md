@@ -131,7 +131,7 @@ You can customize the configuration by setting the following environment variabl
 ```bash
 SHARP_API_KEY=your_api_key_here
 SHARP_API_JOB_STATUS_POLLING_WAIT=180
-SHARP_API_JOB_STATUS_USE_POLLING_INTERVAL=true
+SHARP_API_JOB_STATUS_USE_POLLING_INTERVAL=false
 SHARP_API_JOB_STATUS_POLLING_INTERVAL=10
 SHARP_API_BASE_URL=https://sharpapi.com/api/v1
 ```
@@ -181,6 +181,22 @@ SHARP_API_BASE_URL=https://sharpapi.com/api/v1
   }
 }
 ```
+
+---
+
+## AI agents (Laravel Boost)
+
+This package ships a [Laravel Boost](https://github.com/laravel/boost) skill, `sharpapi-hr-related-skills`, that teaches AI coding agents how to call `HrRelatedSkillsService` correctly: submit, then `fetchResults()` in a queued job, check the job status, and read the result. It loads on demand and adds no always-on guideline. Boost 2 or newer is required.
+
+In the host app:
+
+```bash
+composer require laravel/boost --dev
+php artisan boost:install             # first time
+php artisan boost:update --discover   # already using Boost
+```
+
+Select `sharpapi/laravel-hr-related-skills` when Boost lists the packages it found.
 
 ---
 
